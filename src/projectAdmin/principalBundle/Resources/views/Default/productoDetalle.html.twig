@@ -1,0 +1,333 @@
+{# Producto detalle de la vista principal del sitio. #}
+{% extends "projectAdminprincipalBundle:Layer:base.html.twig" %}
+{% block title %} Producto detalle {% endblock %}
+{% block body %}
+    <div class="header">
+    <div class="headertop">
+
+<div class="row">
+    <div class="small-12 medium-3 large-2 small-centered large-uncentered logo columns"> 
+    <a href="{{path('project_adminprincipal_homepage')}}" title="PEREGRIN Home">
+        
+        
+        
+        
+    <img src="{{asset('bundles/projectadminprincipal/img/logo-int.png')}}" alt="Peregrin." /></a> </div>
+
+        
+        
+ 	<div class="small-4 medium-4 large-3 searchinputholder columns">
+    <input type="text" class="searchinput" placeholder="Buscar Productos" /></div>
+</div>
+
+        
+        
+<div class="row">
+<div class="lan-flag">
+<div class="lan-flag-select">
+<select name="idioma" id="idioma">
+    
+   
+    
+    
+<option value='esp' data-image=" {{asset('bundles/projectadminprincipal/img/blank.gif')}}" data-imagecss="flag esp" data-title="espanol" selected="selected">ESP</option>
+<option value='eng' data-image=" {{asset('bundles/projectadminprincipal/img/blank.gif')}}" data-imagecss="flag eng" data-title="ingles">ENG</option>
+</select>
+</div></div></div></div>
+            
+    <div class="back-body">
+    <div class="back-body-inner">
+      <div class="headerbottom">
+        <div class="headerbottomrow">
+          <div class="menu-icon"><i class="icon-menu"></i></div>
+          <div class="mainnav columns">
+            <ul class="navigation">
+            <!-- Cetegoria -->
+            <li> <a href="#"><span id="textoProductos">PRODUCTOS</span></a>
+              <div class="dropdown-menu">
+                <ul class="dropdown">
+                  {% for categoria in categoria %}
+                        
+                      <li><a href="../../home/productos/{{categoria.id}}" title="{{categoria.nombre}}">{{categoria.nombre}}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </li>
+            <!-- Cetegoria -->
+               <!-- Articulo  -->
+                {% for articulos in articulos %}
+                    <li><a href="{{path('cargarArticulo', {'id':articulos.id} )}}">{{articulos.titulo}}</a></li>
+                {% endfor %}
+                <!-- Articulo  -->
+              <li><a href="{{path('formularioContacto')}}"><span id="textoMenuCont">CONTACTO</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+<div class="back-body-white">
+	<div class="row">
+            
+           
+      <div class="small-7 small-centered medium-4 medium-uncentered large-4 large-uncentered product-thumb columns text-center">
+        <div class="product-main-photo">
+            {% set foto = producto.foto %}
+            {% set contador = 0 %}
+            {% for foto in foto %} 
+             {% set contador = contador +1 %}
+             {% if contador <= 1 %}
+             
+             <img class="p-photo" src="../../productos/{{producto.id}}/{{foto.url}}" data-large="../../productos/{{producto.id}}/{{foto.url}}" alt="{{producto.nombre}}" width="295" height="373"    /> </div>
+             {% endif %}
+             {% endfor %}
+              
+              
+              
+              <div class="thumb-gallery">
+            
+            
+             
+            
+          <div id="carousel-gallery">
+             
+              
+           
+                {% set tumb = producto.foto %}
+           
+                {% for tumb in tumb %}
+               
+           
+              
+                          <div class="item">     <img data-tmb-large="../../productos/{{producto.id}}/{{tumb.url}}" data-medium="../../productos/{{producto.id}}/{{tumb.url}}" src="../../productos/{{producto.id}}/{{tumb.url}}" alt="Producct 21" width="77" height="74" />           </div>
+                        
+              
+            
+              {% endfor %}
+  
+          </div>
+            
+            
+            
+            
+           
+            
+            <!--
+                <div class="outer-social-in"><div class="social-icon-in">
+          <ul>
+              
+           
+          <li><img src="{#{{asset('bundles/projectadminprincipal/img/social-ico-twi.jpg')}}#}"></li>
+          
+          <li><img src="{#{{asset('bundles/projectadminprincipal/img/social-ico-fb.jpg')}}#}"></li>
+
+          </ul>
+          </div></div>
+        </div>
+    -->
+      </div>
+<div class="small-12 small-centered medium-5 medium-uncentered large-5 large-uncentered product-description columns">
+  
+    
+    
+    <div class="product-detail-title">{{producto.nombre}}</div>
+  <div class="product-detail-description-sub">{{producto.caracteristicasuno}}</div>
+  <div class="product-detail-description-sub"><span id="txtMaterial">Material telas: </span>  {{producto.caracteristicasdos}}</div>
+  <br><br>
+
+  <div class="product-detail-description"><b><span id="txtdescripcion">Descripción</span></b><br>
+                                                    {{producto.descripcion}}
+			</div>
+          <div class="product-detail-description"></div>
+         
+			<div class="clearing"></div>
+
+			
+
+			
+
+		
+		</div>
+            
+            
+<div class="small-12 small-centered medium-3 medium-uncentered large-3 large-uncentered product-right-module columns">
+    <div class="lft-module-heading"> <span id="txtProdRela">Productos Relacionados </span> </div>
+ 
+  {% for productoAsoc in productoAsoc %}
+  {% if productoAsoc.id != producto.id %}
+  
+  <div class="bg-best-selling">
+    <div class="bst-seller-list">
+      <div class="bst-seller-thumb"> 
+          
+          {% set foto = productoAsoc.foto %}
+          {% set cont = 0 %}
+          {% for foto in foto %}
+          {% set cont = cont + 1 %}
+          {% if cont <= 1 %}
+          
+      <img src="../../productos/{{productoAsoc.id}}/{{foto.url}}" alt="{{productoAsoc.nombre}}" width="77" height="74" /> 
+          {% endif %}
+      {% endfor %}
+      
+      </div>
+            
+            
+      <div class="bst-seller-content">
+     <div class="bst-seller-title">
+            
+            <a href="#" title="turtle neck">  {{ productoAsoc.nombre }}</a></div>
+              
+              
+        <div class="bst-seller-price">{{ productoAsoc.caracteristicasdos }}</div>
+        
+        <div class="bst-seller-cart"></div>
+      </div>
+      <div class="clearing"></div>
+    </div>
+    <div class="bst-seller-list">
+  
+   
+  </div>
+</div>
+  
+  
+  {% endif %}
+  {% endfor %}
+  
+<div class="clearing"></div>
+
+	
+	<br><br><br>
+	
+	<br><br><br>
+	</div></div></div>
+    <div class="contentborder"></div>
+
+    
+	
+    
+        {% include "projectAdminprincipalBundle:Layer:footer.html.twig" %}
+    
+    
+    
+       <script type="text/javascript" src="{{asset('bundles/projectadminprincipal/javascripts/vendor/jquery.js')}}"></script>
+     
+       
+       
+       
+         <script>
+                        $('document').ready(function() {
+                            
+                            var idioma = "{{idioma}}";
+                            console.log('dioma es ' + idioma);
+                            
+                            if(idioma == 'ingles'){
+                            
+                            $('#textoProductos').text('PRODUCTS');
+                            $('#textoMenuCont').text('CONTACT');
+                            $('#textultimosPro').text('LATEST PRODUCTS');
+                            $('#textContFotter').text('Contact');
+                            $('.textVerDetalle').text('View details');
+                            $('#txtMaterial').text('Material fabrics :');
+                            $('#txtdescripcion').text('Description');
+                            $('#txtProdRela').text('RELATED PRODUCTS');
+                            
+                            
+                            
+                            }
+                            
+                            if(idioma == ''){
+                                
+                                
+                            $('#textoProductos').text('PRODUCTOS');
+                            $('#textoMenuCont').text('CONTACTO');
+                            $('#textultimosPro').text('LATEST PRODUCTS');
+                            $('#textContFotter').text('CONTACTO');
+                            $('.textVerDetalle').text('Ver Detalles');   
+                            $('#txtMaterial').text('Material telas : ');
+                            $('#txtdescripcion').text('Descripción');
+                            $('#txtProdRela').text('PRODUCTOS RELACIONADOS');
+                            
+                                
+                                
+                                
+                            }
+                            
+                        });
+                        
+                        
+                    </script>    
+                    
+                    
+          <script src="{{asset('bundles/projectadminprincipal/javascripts/foundation/foundation.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/projectadminprincipal/javascripts/nexx.js')}}"></script>
+<script type="text/javascript" src="{{asset('bundles/projectadminprincipal/javascripts/vendor/jquery.flexslider-min.js')}}"></script>
+    <script type="text/javascript">
+    var $ = jQuery.noConflict();
+    $(window).load(function() {
+
+    $('.flexslider').flexslider();
+
+	});
+
+   </script>
+   
+   <script type="text/javascript" src="{{asset('bundles/projectadminprincipal/javascripts/jquery.selectric.js')}}"></script>
+   <script type="text/javascript">
+   $(function(){
+	$('select').selectric(); // this function turn all <select> to custom Styling for specific select box use $("#selectbox").selectric(); 
+	 });
+   </script>
+   
+   <script src="{{asset('bundles/projectadminprincipal/owl-carousel/owl.carousel.min.js')}}"></script>
+   <script src="{{asset('bundles/projectadminprincipal/javascripts/zoomsl-3.0.min.js')}}"></script>
+   
+  
+       <script>
+          
+jQuery(function(){
+
+	$(".p-photo").imagezoomsl({ 
+		
+					
+		zoomrange: [1.68, 10],
+		zoomstart: 1.68,
+		cursorshadeborder: "10px solid black",
+		magnifiereffectanimate: "fadeIn",	
+	});
+  
+
+	$(".item img").click(function(){
+
+	    var that = this;
+		$(".p-photo").fadeOut(600, function(){
+		
+			$(this).attr("src", 	   $(that).attr("data-medium"))
+				   .attr("data-large", $(that).attr("data-tmb-large"))
+				   .fadeIn(1000);				
+		});
+
+	    return false;
+	});  
+
+});
+</script>
+
+
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-529109035c5dc365"></script>
+<script type="text/javascript">
+  addthis.layers({
+    'theme' : 'transparent',
+    'share' : {
+      'position' : 'left',
+      'numPreferredServices' : 5
+    },  
+    'whatsnext' : {}  
+  });
+</script>
+
+
+
+    
+{% endblock %}

@@ -1,0 +1,7 @@
+parameters:
+#    project_admin_paginas.example.class: projectAdmin\PaginasBundle\Example
+
+services:
+#    project_admin_paginas.example:
+#        class: %project_admin_paginas.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

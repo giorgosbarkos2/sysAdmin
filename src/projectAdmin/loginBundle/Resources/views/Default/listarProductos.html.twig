@@ -1,0 +1,165 @@
+
+
+
+
+
+
+{% extends "projectAdminloginBundle:layers:basePrincipal.html.twig" %}
+{% block title %} Listar Productos {% endblock %}
+{% block padre %}<a href="{{path('vistaFormularioProducto')}}">Agregar Productos</a>{% endblock %}
+{% block hijo %} Listar Producto {%endblock%}
+{% block titulo %}Listar Productos{%endblock %}
+{% block contenido %}
+
+
+
+
+
+<div class="container" >
+    <table class="table dataTable" width="60%" id="tablaProductos"  >
+        <thead>
+            
+            <th  width="10%">Nombre </th>
+            <th  width="10%">Categoría  </th>
+            <th  width="10%">Idioma  </th>
+     
+            
+            <th  width="10%">Foto</th>
+            <th  width="10%">Editar </th>
+            <th  width="10%">Eliminar </th>
+        </thead>
+        
+         <thead>
+            
+            <th  width="10%">Nombre </th>
+            <th  width="10%">Categoría  </th>
+            <th  width="10%">Idioma  </th>
+            
+
+            
+            <th  width="10%">Foto</th>
+            <th  width="10%">Editar </th>
+            <th  width="10%">Eliminar </th>
+        </thead>
+        
+        
+        {% for producto in producto %}
+        <tbody>
+            
+            <tr id="producto-{{producto.id}}">
+                
+                <td>{% if producto.nombre %} {{producto.nombre}} {% endif %}</td>
+                <td>{% if producto.categoria.nombre %}{{producto.categoria.nombre}}{%endif%}</td>
+                <td>{% if producto.idioma %}{{producto.idioma}} {% endif %}</td>
+
+
+                
+                
+                
+                  <td>
+               {% if producto.foto %}
+                {% set foto = producto.foto %} 
+                {% set contador = 0 %}
+                        
+                {% for foto in foto %}
+                 
+                        {% set contador = contador + 1 %}
+                        
+                        {% if contador <= 1 %}
+                        
+    
+                        
+              <img src="../productos/{{producto.id}}/{{foto.url}}" style="width:100px;height:100px; margin: auto;">
+                        
+                        
+                        {% endif %}
+                        
+                        
+                 {% endfor %}  
+              
+              {% endif %}
+                        
+                    
+                
+                </td>
+                
+                
+                
+                
+                
+            <td><a href="vistaFormularioEditarProducto/{{producto.id}}"  class="btn btn-primary">Editar</a></td>
+            <td><button  id="btn2-{{producto.id}}"  class="eliminar">Eliminar</button></td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+
+
+
+
+<form action="{{path('eliminarProducto')}}" method="post" id="formEliminarProducto" ></form>
+<script>
+
+$('document').ready(function() {
+    
+    
+    
+       $('#tablaProductos2').dataTable()
+		 .columnFilter({ sPlaceHolder: "head:after",
+                                                             aoColumns: [
+
+		        { type: "text" },
+		        { type: "text" },
+                                        { type: "text" },
+		        { type: "text" },
+           
+     
+                        
+		  
+
+				]
+
+		});
+
+
+
+
+$("#tablaProductos").on("click", ".eliminar", function(e) {
+        e.preventDefault();
+        var clickedID = this.id.split('-');
+        var DbNumberID = clickedID[1]; // toma el numero del array
+
+        var myData = 'recordToDelete=' + DbNumberID;
+
+
+        console.log('elemento a elimnar id ' + myData);
+        
+        
+
+        jQuery.ajax({
+            type: "POST",
+            url: $('#formEliminarProducto').attr('action'),
+            
+            dataType: "text",
+            data: myData,
+            success: function(response) {
+                
+
+                $('#producto-' + DbNumberID).hide('slow');;
+
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+
+                alert(thrownError);
+
+            }
+
+        });
+    });
+
+});
+</script>
+
+{% endblock%}
+

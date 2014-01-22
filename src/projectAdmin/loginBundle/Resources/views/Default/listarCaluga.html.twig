@@ -1,0 +1,79 @@
+{# lista las calugas que se encuentran ingresadas en la base de datos. #}
+{% extends "projectAdminloginBundle:layers:basePrincipal.html.twig" %}
+{% block title%} Listar Caluga {% endblock%}
+{% block padre %}<a href="{{path('listarCalugas')}}">Listar Calugas</a>{% endblock %}
+{% block hijo %} listar Caluga {%endblock%}
+{% block titulo %} Listar Caluga {%endblock %}
+{% block contenido %}
+<div class="container">
+    <table class="table table-bordered table-striped" id="tablaCaluga">
+        <thead>
+            <th width="10%">Titulo</th>
+            <th width="10%">Idioma </th>
+            <th width="10%">Descripcion Corta  </th>
+            <th width="10%">Descripcion  </th>
+            <th width="10%">Foto </th>
+            <th width="10%">Editar</th>
+            <th width="10%">Eliminar</th>
+            
+        </thead>
+        <tbody>
+            {% for caluga in caluga %}
+            <tr id="caluga-{{caluga.id}}">
+                <td>{{caluga.titulo}}</td>
+                <td>{{caluga.idioma}}</td>
+                <td>{{caluga.descripcioncorta}}</td>
+                <td>{{caluga.descripcion}}</td>
+                <td>   <!-- <img src="../caluga/{{caluga.id}}/{{caluga.url}}" style="width:100px;height:100px; margin: auto;"> --> 
+                
+                
+                
+                
+                </td>
+                <td> <a href="vistaEditarCaluga/{{caluga.id}}" class="btn btn-primary">Editar</a></td>
+                <td> <button  id="cal-{{caluga.id}}" class="eliminar">Eliminar</button> </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+<form id="formEliminarCaluga" method="post" action="{{path('eliminarCaluga')}}"></form>
+
+<script>
+    
+    
+  
+$('document').ready(function() {
+   
+$("#tablaCaluga").on("click", ".eliminar", function(e) {
+        e.preventDefault();
+        var clickedID = this.id.split('-');
+        var DbNumberID = clickedID[1]; // toma el numero del array
+        var myData = 'recordToDelete=' + DbNumberID;
+     
+        jQuery.ajax({
+            type: "POST",
+            url: $('#formEliminarCaluga').attr('action'),
+            dataType: "text",
+            data: myData,
+            success: function(response) {
+                
+                
+              $('#caluga-' + DbNumberID).hide('slow');;
+
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+
+                alert(thrownError);
+
+            }
+
+        });
+    });
+
+});
+</script>
+{% endblock %}

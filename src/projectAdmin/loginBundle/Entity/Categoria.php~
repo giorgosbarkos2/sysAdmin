@@ -1,0 +1,64 @@
+<?php
+
+namespace projectAdmin\loginBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Categoria
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class Categoria
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+    * @var string
+    * @ORM\Column(name="nombre", type="string", length=255 , nullable=true)
+    */
+    
+    private $nombre;
+    
+    /**
+    * @var string
+    * @ORM\Column(name="departamento", type="string", length=255 , nullable=true)
+    */
+    
+    private $departamento;
+    
+    /**
+    * @var string
+    * @ORM\Column(name="descripcion", type="string", length=400 , nullable=true)
+    */
+    
+    private $descripcion;
+    
+    /**
+    * @var string
+    * @ORM\Column(name="descripcioncorta", type="string", length=255 , nullable=true)
+    */
+
+    private $descripcioncorta;
+    
+    /**
+    * @var string
+    * @ORM\Column(name="idioma", type="string", length=255 , nullable=true)
+    */
+    private $idioma;
+    
+   /**
+    * @ORM\OneToMany(targetEntity="projectAdmin\loginBundle\Entity\Producto", mappedBy="categoria")
+    */
+    
+    private $producto;
+    
+}

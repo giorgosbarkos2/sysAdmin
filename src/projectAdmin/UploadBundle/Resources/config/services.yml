@@ -1,0 +1,7 @@
+parameters:
+#    project_admin_upload.example.class: projectAdmin\UploadBundle\Example
+
+services:
+#    project_admin_upload.example:
+#        class: %project_admin_upload.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

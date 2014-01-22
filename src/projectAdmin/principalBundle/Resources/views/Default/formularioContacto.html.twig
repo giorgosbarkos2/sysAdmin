@@ -1,0 +1,265 @@
+{# Formulario de contacto del main. #}
+{% extends "projectAdminprincipalBundle:Layer:base.html.twig" %}
+{% block title %} Formulario de contacto {% endblock %}
+{% block body %}
+<div class="header">
+
+    
+     {% include "projectAdminprincipalBundle:Layer:headerInt.html.twig" %}
+    
+    
+
+
+<div class="back-body">
+<div class="back-body-inner">
+<div class="headerbottom">
+  <div class="headerbottomrow">
+    <div class="menu-icon"><i class="icon-menu"></i></div>
+    <div class="mainnav columns">
+      <ul class="navigation">
+        <!-- Cetegoria -->
+        <li> <a href="#"><span id="textoProductos">PRODUCTOS</span></a>
+          <div class="dropdown-menu">
+            <ul class="dropdown">
+              {% for categoria in categoria %}  
+                  <li><a href="productos/{{categoria.id}}" title="{{categoria.nombre}}">{{categoria.nombre}}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </li>
+        <!-- Cetegoria -->
+        
+        <!-- Articulo  -->
+        {% for articulos in articulos %}
+            <li><a href="{{path('cargarArticulo', {'id':articulos.id} )}}">{{articulos.titulo}}</a></li>
+        {% endfor %}
+        <!-- Articulo  -->
+        <li><a href="{{path('formularioContacto')}}"><span id="textoMenuCont">CONTACTO</span></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--<div class="breadcrumb-holder">
+  <div class="row">
+    <ul class="breadcrumbs small-12 medium-8 large-8 columns">
+      <li><a href="#" title="Homepage">Home</a></li>
+      <li>Contact us</li>
+    </ul>
+  </div>
+</div>-->
+<div class="back-body-white">
+<div class="row featured-row">
+		<br><br>
+                <h1><span id="txtcontac">Contactanos</span></h1>
+		<div class="fr-border"></div>
+		
+		<div class="small-12 small-centered medium-5 medium-uncentered large-5 large-uncentered columns">
+			
+			
+
+			<div class="contact-item">
+				<i class="icon-location"></i> MF Building Chandhanee Magu
+
+			</div>
+			<div class="contact-item">
+				<i class="icon-phone"></i> (+56 2) 267 890 254
+			</div>
+
+			<div class="contact-item">
+				<i class="icon-envelop"></i> info@peregrin.cl
+			</div>
+
+
+			<div class="fr-border"></div>
+			<iframe style="width:100%;" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=New+York,+Chelsea+Park@40.757888,-73.984337&ie=UTF8&z=12&output=embed&t=m&iwloc=near"></iframe>
+<br><br><br><br>
+
+		</div>
+		<div class="small-12 small-centered medium-7 medium-uncentered large-7 large-uncentered columns">
+			<h2><span id="txtEnviamen">ENVIANOS TU MENSAJE</span></h2>
+			<form action="{{path('sendContacto')}}"  id="formContacto"class="form" method="post" />
+				
+				<label><span id="txtNombre">NOMBRE:</span></label>
+				<input type="text" id="nombre"  name="nombre"/>
+				
+
+				<label for="">EMAIL:</label>
+				<input type="text" placeholder="tu@email.cl" id="email" name="email" />
+
+                                <label for=""><span id="txtMensaje">MENSAJE:</span></label>
+				<textarea name="mensaje" id="mensaje"></textarea>
+
+				<button class="form-btn" id="btnContacto"><i class="icon-arrow-right"></i> <span id="txtEnviar">ENVIAR</span></button>
+                                
+                               
+                                
+			</form>
+                        
+                        <div id="respuesta">
+                                Mensaje Enviado
+                        </div>
+                        </div>
+
+	</div></div></div>
+    
+    
+    <div class="contentborder"></div>
+
+    
+       
+        {% include "projectAdminprincipalBundle:Layer:footer.html.twig" %}
+    
+    
+    
+{% block script%}
+    
+      <script type="text/javascript" src="{{asset('bundles/projectadminprincipal/javascripts/vendor/jquery.js')}}"></script>
+      
+      
+      
+         <script>
+             
+             
+$(document).ready(function() {
+    
+    $('#respuesta').hide('fast');
+    
+    $("#btnContacto").click(function(e) {
+        e.preventDefault();
+        var myData = 'nombre=' + $("#nombre").val()
+                            + '&email=' + $("#email").val()
+                            + '&mensaje=' + $("#mensaje").val();
+                    
+          
+        jQuery.ajax({
+            type: "POST", // metodo post o get 
+            url: $("#formContacto").attr("action"),
+            dataType: "text", // tipo datos text o json etc 
+            data: myData,
+            success: function(response) {
+
+
+                var respuesta = response;
+                
+
+                if (respuesta == 100) {
+                    
+                     $('#formContacto').parsley( 'validate' );
+                     
+
+  
+                }
+                    
+                if(respuesta == 200){
+                    
+                    
+                    
+                    $('#formContacto').hide( 'fast' );
+                    
+                    
+                    $('#respuesta').show('fast');
+                    
+                }
+
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(thrownError);
+
+            },
+        });
+    });
+});
+
+
+
+                        $('document').ready(function() {
+                            
+                            var idioma = "{{idioma}}";
+                            console.log('dioma es ' + idioma);
+                            
+                            if(idioma == 'ingles'){
+                            
+                            $('#textoProductos').text('PRODUCTS');
+                            $('#textoMenuCont').text('CONTACT');
+                            $('#textultimosPro').text('LATEST PRODUCTS');
+                            $('#textContFotter').text('Contact');
+                            $('.textVerDetalle').text('View details');
+                            $('#txtcontac').text('Contact');
+                            $('#txtEnviamen').text('SEND YOUR MESSAGE');
+                            $('#txtNombre').text('NAME : ');
+                            $('#txtMensaje').text('MESSAGE : ');
+                            $('#txtEnviar').text('SEND');
+                            
+                            
+                            
+                            }
+                            
+                            if(idioma == ''){
+                                
+                                
+                            $('#textoProductos').text('PRODUCTOS');
+                            $('#textoMenuCont').text('CONTACTO');
+                            $('#textultimosPro').text('LATEST PRODUCTS');
+                            $('#textContFotter').text('CONTACTO');
+                            $('.textVerDetalle').text('Ver Detalles');    
+                            $('#txtcontac').text('Contactanos');
+                            $('#txtEnviamen').text('ENVIANOS TU MENSAJE');
+                            $('#txtNombre').text('NOMBRE : ');
+                            $('#txtMensaje').text('MENSAJE : ');
+                             $('#txtEnviar').text('ENVIAR');
+                             
+                                
+                                
+                            }
+                            
+                        });
+                        
+                        
+                    </script>    
+                    
+                    
+            <script type="text/javascript" src="{{asset('bundles/projectadminprincipal/javascripts/jquery.selectric.js')}}"></script>
+            <script type="text/javascript">
+                $(function() {
+                    $('select').selectric(); // this function turn all <select> to custom Styling for specific select box use $("#selectbox").selectric(); 
+                });
+                </script>
+                <script src="{{asset('bundles/projectadminprincipal/javascripts/foundation/foundation.js')}}"></script>
+                <script type="text/javascript" src="{{asset('bundles/projectadminprincipal/javascripts/nexx.js')}}"></script>
+                <script type="text/javascript" src="{{asset('bundles/projectadminprincipal/javascripts/vendor/jquery.flexslider-min.js')}}"></script>
+                <script type="text/javascript">
+                     // Main Slider
+                     var $ = jQuery.noConflict();
+                     $(window).load(function() {
+                         $('.flexslider').flexslider();
+                     });
+                    </script>
+                    <script type="text/javascript" src="{{asset('bundles/projectadminprincipal/javascripts/jquery.selectric.js')}}"></script>
+
+
+
+
+
+
+                    <!-- AddThis Smart Layers BEGIN -->
+                    <!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-529109035c5dc365"></script>
+                    <script type="text/javascript">
+                        addthis.layers({
+                            'theme': 'gray',
+                            'share': {
+                                'position': 'left',
+                                'numPreferredServices': 5
+                            },
+                            'whatsnext': {},
+                            'recommended': {}
+                        });
+                        </script>
+                        
+      <script>              
+       
+</script> 
+  
+{% endblock %}    
+{% endblock %}
+

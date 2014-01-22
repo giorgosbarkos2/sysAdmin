@@ -1,0 +1,224 @@
+project_adminlogin_homepage:
+    pattern:  /login
+    defaults: { _controller: projectAdminloginBundle:Default:vistalogin }
+
+recibelogin:
+    pattern: /admin/recibelogin
+    defaults: { _controller: projectAdminloginBundle:Default:recibelogin }
+
+loginVista:
+    pattern: /admin/
+    defaults: { _controller: projectAdminloginBundle:Default:loginVista }
+
+
+uploadProductosImg:
+  pattern: /admin/uploadProductosImg
+  defaults: { _controller: projectAdminloginBundle:Default:uploadProductosImg }
+  
+uploadCaluga:
+  pattern: /admin/uploadCaluga
+  defaults: { _controller: projectAdminloginBundle:Default:uploadCaluga }
+  
+  
+  
+vistaUploadCaluga:
+    pattern: /admin/vistaUploadCaluga
+    defaults: { _controller: projectAdminloginBundle:Default:vistaUploadCaluga }
+  
+  
+  
+vistaFormularioCategoria:
+    pattern: /admin/vistaFormularioCategoria
+    defaults: {_controller: projectAdminloginBundle:Default:vistaFormularioCategoria}
+    
+    
+principalVista:
+   pattern: /admin/principalVista
+   defaults: {_controller: projectAdminloginBundle:Default:principalVista }
+  
+
+guardarCategoria:
+    pattern: /admin/guardarCategoria
+    defaults: {_controller: projectAdminloginBundle:Default:guardarCategoria}
+
+listarCategoria:
+    pattern: /admin/listarCategoria
+    defaults: {_controller: projectAdminloginBundle:Default:listarCategoria}
+
+editarCategoria:
+    pattern: /admin/editarCategoria/{id}
+    defaults: {_controller: projectAdminloginBundle:Default:editarCategoria}
+
+guardarEditarCategoria:
+    pattern: /admin/guardarEditarCategoria
+    defaults: {_controller: projectAdminloginBundle:Default:guardarEditarCategoria}
+
+eliminarCategoria:
+    pattern: /eliminarCategoria
+    defaults: {_controller: projectAdminloginBundle:Default:eliminarCategoria}
+
+vistaFormularioProducto:
+    pattern: /admin/vistaFormularioProducto
+    defaults: {_controller: projectAdminloginBundle:Default:vistaFormularioProducto}
+
+guardarProducto:
+    pattern: /admin/guardarProducto
+    defaults: {_controller: projectAdminloginBundle:Default:guardarProducto}
+
+listarProducto:
+    pattern: /admin/listarProducto
+    defaults: {_controller: projectAdminloginBundle:Default:listarProducto}
+
+vistaFormularioEditarProducto:
+    pattern: /admin/vistaFormularioEditarProducto/{id}
+    defaults: {_controller: projectAdminloginBundle:Default:vistaFormularioEditarProducto}
+
+guardarEditarProducto:
+    pattern: /admin/guardarEditarProducto
+    defaults: {_controller: projectAdminloginBundle:Default:guardarEditarProducto}
+
+eliminarProducto:
+    pattern: /eliminarProducto
+    defaults: {_controller: projectAdminloginBundle:Default:eliminarProducto}
+
+vistaFormularioFotoBanner:
+    pattern: /admin/vistaFormularioFotoBanner
+    defaults: {_controller: projectAdminloginBundle:Default:vistaFormularioFotoBanner}
+    
+guardarFormularioBanner:
+    pattern: /admin/guardarFormularioBanner
+    defaults: {_controller: projectAdminloginBundle:Default:guardarFormularioBanner}
+
+listarBanner:
+    pattern: /admin/listarBanner
+    defaults: {_controller: projectAdminloginBundle:Default:listarBanner}
+
+eliminarBanner:
+    pattern: /eliminarBanner
+    defaults: {_controller: projectAdminloginBundle:Default:eliminarBanner}
+    
+vistaFormularioEditarBanner:
+    pattern: /admin/vistaFormularioEditarBanner/{id}
+    defaults: {_controller: projectAdminloginBundle:Default:vistaFormularioEditarBanner}
+    
+guardarFormularioEditar:
+    pattern: /admin/guardarFormularioEditar
+    defaults: {_controller: projectAdminloginBundle:Default:guardarFormularioEditar}
+
+uploadImagen:
+    pattern: /admin/uploadImagen
+    defaults: {_controller: projectAdminloginBundle:Default:uploadImagen}
+
+vistaFormularioCaluga:
+    pattern: /admin/vistaFormularioCaluga
+    defaults: {_controller: projectAdminloginBundle:Default:vistaFormularioCaluga}
+
+guardarCaluga:
+    pattern: /admin/guardarCaluga
+    defaults: {_controller: projectAdminloginBundle:Default:guardarCaluga}
+
+listarCalugas:
+    pattern: /admin/listarCalugas
+    defaults: {_controller: projectAdminloginBundle:Default:listarCalugas}
+
+vistaEditarCaluga:
+    pattern: /admin/vistaEditarCaluga/{id}
+    defaults: {_controller: projectAdminloginBundle:Default:vistaEditarCaluga}
+
+guardarEditarCaluga:
+    pattern: /admin/guardarEditarCaluga
+    defaults: {_controller: projectAdminloginBundle:Default:guardarEditarCaluga}
+    
+eliminarCaluga:
+    pattern: /eliminarCaluga
+    defaults: {_controller: projectAdminloginBundle:Default:eliminarCaluga}
+       
+uploadBanner:
+  pattern: /admin/uploadBanner
+  defaults: {_controller: projectAdminloginBundle:Default:uploadBanner}
+  
+uploadBannerView:
+    pattern: /admin/uploadBannerView
+    defaults: {_controller: projectAdminloginBundle:Default:uploadBannerView}
+
+eliminarFotoProducto:
+    pattern: /admin/eliminarFotoProducto/{id}
+    defaults: {_controller: projectAdminloginBundle:Default:eliminarFotoProducto}
+
+eliminarFotoCaluga:
+    pattern: /admin/eliminarFotoCaluga/{id}
+    defaults: {_controller: projectAdminloginBundle:Default:eliminarFotoCaluga}
+
+eliminarFotoBanner:
+    pattern: /admin/eliminarFotoBanner
+    defaults: {_controller: projectAdminloginBundle:Default:eliminarFotoBanner}
+
+vistaFormularioSegundoBanner:
+    pattern: /admin/vistaFormularioSegundoBanner
+    defaults: {_controller: projectAdminloginBundle:Default:vistaFormularioSegundoBanner}
+
+guardarFormularioSegundoBanner:
+    pattern: /admin/guardarFormularioSegundoBanner
+    defaults: {_controller: projectAdminloginBundle:Default:guardarFormularioSegundoBanner}
+
+vistaUploadSegundoBanner:
+    pattern: /admin/vistaUploadSegundoBanner
+    defaults: {_controller: projectAdminloginBundle:Default:vistaUploadSegundoBanner}
+
+uploadSegundoBanner:
+    pattern: /admin/uploadSegundoBanner
+    defaults: {_controller: projectAdminloginBundle:Default:uploadSegundoBanner}
+
+listarSegundoBanner:
+    pattern: /admin/listarSegundoBanner
+    defaults: {_controller:  projectAdminloginBundle:Default:listarSegundoBanner}
+
+eliminarSegundoBanner:
+    pattern: /admin/eliminarSegundoBanner
+    defaults: {_controller: projectAdminloginBundle:Default:eliminarSegundoBanner}
+
+vistaEditarSegundoBanner:
+    pattern: /admin/vistaEditarSegundoBanner/{id}
+    defaults: {_controller: projectAdminloginBundle:Default:vistaEditarSegundoBanner}
+
+guardarEditarSegundoBanner:
+    pattern: /admin/guardarEditarSegundoBanner
+    defaults: {_controller: projectAdminloginBundle:Default:guardarEditarSegundoBanner}
+    
+vistaFormularioArticulo:
+    pattern: /admin/vistaFormularioArticulo
+    defaults: {_controller: projectAdminloginBundle:Default:vistaFormularioArticulo}
+    
+guardarFormularioArticulo:
+    pattern: /admin/guardarFormularioArticulo
+    defaults: {_controller: projectAdminloginBundle:Default:guardarFormularioArticulo}
+
+vistaUploadFotoArticulo:
+    pattern: /admin/vistaUploadFotoArticulo
+    defaults: {_controller: projectAdminloginBundle:Default:vistaUploadFotoArticulo}
+
+uploadArticulo:
+    pattern: /admin/uploadArticulo
+    defaults: {_controller: projectAdminloginBundle:Default:uploadArticulo}
+
+listarArticulos:
+    pattern: /admin/listarArticulos
+    defaults: {_controller: projectAdminloginBundle:Default:listarArticulos}
+
+eliminarArticulo:
+    pattern: /admin/eliminarArticulo
+    defaults: {_controller: projectAdminloginBundle:Default:eliminarArticulo}
+
+vistaFormularioEditarArticulo:
+    pattern: /admin/vistaFormularioEditarArticulo/{id}
+    defaults: {_controller: projectAdminloginBundle:Default:vistaFormularioEditarArticulo}
+
+eliminarFotoArticulo:
+    pattern: /admin/eliminarFotoArticulo/
+    defaults: {_controller: projectAdminloginBundle:Default:eliminarFotoArticulo}
+
+guardarEditarArticulo:
+    pattern: /admin/guardarEditarArticulo
+    defaults: {_controller: projectAdminloginBundle:Default:guardarEditarArticulo}
+    
+    

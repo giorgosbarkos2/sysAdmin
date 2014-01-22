@@ -1,0 +1,26 @@
+{# empty Twig template #}
+
+    <div class="footer-top-bg">	
+                <div class="row">
+                    <div class="small-12 small-centered large-uncentered medium-uncentered medium-6 large-5 navigation-footer columns">
+                        <ul>
+                            
+                             {% for articulos in articulos %}
+                
+                               <li><a href="{{path('cargarArticulo', {'id':articulos.id} )}}">{{articulos.titulo}}</a></li>
+                               
+                               
+                            {% endfor %}
+                            <li><a href="{{path('formularioContacto')}}"><span id="textContFotter">CONTACTO</span></a></li>
+                        </ul>
+                    </div>
+
+
+                    <div class="small-12 small-centered large-uncentered medium-uncentered medium-6 large-7 logo-footer columns">
+                        <img src="{{asset('bundles/projectadminprincipal/img/logo-footer.png')}}" alt="peregrin"></div>
+                </div>
+                <div class="row">
+                    <div class="small-12 small-centered large-uncentered medium-uncentered medium-6 large-4 copyright columns">
+                        &copy; Copyright 2013 Peregrin. All Rights Reserved
+                    </div></div>
+            </div>

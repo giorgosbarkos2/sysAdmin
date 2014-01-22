@@ -1,0 +1,39 @@
+{# empty Twig template #}
+<div class="headertop">
+        <div class="row">
+            <div class="small-4 medium-3 large-2 small-centered large-uncentered logo columns"> 
+
+
+
+                
+                
+
+                <a href="{{path('project_adminprincipal_homepage')}}" title="PEREGRIN Home"><img src="{{asset('bundles/projectadminprincipal/img/logo.png')}}" alt="Peregrin." /></a> </div>
+
+        
+          <div class="small-4 medium-4 large-3 searchinputholder columns">
+             <input type="text" class="searchinput" placeholder="" /></div>    
+        </div> 
+                
+            
+
+        <div class="row">
+            <div class="lan-flag">
+                <div class="lan-flag-select">
+                    <select name="idioma" id="idioma" action="{{path('Idiomas')}}" onChange="location.href=this.value" >
+                      
+                        <option value="Idioma">Idioma</option>
+                        
+                        
+                        
+                        <option data-title="home/espanol" value="home/espanol" > Esp</option>
+                        <option data-title="home/ingles" value="home/ingles2">ING</option>
+                        
+                        
+                    </select>
+                        
+                        
+                </div>
+                </div>
+            </div>
+        </div>

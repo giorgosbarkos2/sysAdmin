@@ -1,0 +1,29 @@
+{# pagina principal con los js y la maqueta principal #}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        
+         <meta name="viewport" content="width=device-width" />
+        <title>{% block title%}{% endblock%}</title>
+        {% block css %}
+            <link rel="stylesheet" type="text/css" href="{{asset('bundles/projectadminprincipal/stylesheets/selectric.css')}}" />
+            <link rel="stylesheet" type="text/css" href="{{asset('bundles/projectadminprincipal/stylesheets/app.css')}}" />
+            <link rel="stylesheet" type="text/css" href="{{asset('bundles/projectadminprincipal/stylesheets/base.css')}}" />
+            <link rel="stylesheet" type="text/css" href="{{asset('bundles/projectadminprincipal/fonts/style.css')}}" />
+            <link rel="stylesheet" type="text/css" href="{{asset('bundles/projectadminprincipal/stylesheets/animations.css')}}" />
+            <link rel="stylesheet" type="text/css" href="{{asset('bundles/projectadminprincipal/stylesheets/slider.css')}}" media="all" />
+            <link href="{{asset('bundles/projectadminprincipal/owl-carousel/owl.carousel.css')}}" rel="stylesheet" />
+            <link href="{{asset('bundles/projectadminprincipal/owl-carousel/owl.theme.css')}}" rel="stylesheet" />
+            <script src="{{asset('bundles/projectadminprincipal/javascripts/vendor/custom.modernizr.js')}}"></script>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        {% endblock %}
+    </head>
+    <body>
+        {% block body%}
+        {% endblock%}
+        {% block script %}
+            
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,283 @@
+{% extends "projectAdminprincipalBundle:Layer:base.html.twig" %}
+{% block title %} Bienvenido a Peregrin {% endblock %}
+{% block body %}
+<div class="header">
+
+
+    {% include "projectAdminprincipalBundle:Layer:header.html.twig" %}
+
+
+    <div class="back-body">
+        <div class="back-body-inner">
+            <div class="headerbottom">
+                <div class="headerbottomrow">
+                    <div class="menu-icon"><i class="icon-menu"></i></div>
+                    <div class="mainnav columns">
+                        <ul class="navigation">
+
+
+                            <!-- Cetegoria -->
+                            <li> <a href="#"><span id="textoProductos">PRODUCTOS<span></a>
+                                <div class="dropdown-menu">
+                                    <ul class="dropdown">
+                  {% for categoria in categoria %}  
+
+                                            <li><a href="home/productos/{{categoria.id}}" title="{{categoria.nombre}}">{{categoria.nombre}} </a></li>
+                  {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <!-- Cetegoria -->
+                                    <!-- Articulo  -->
+                                    {% for articulos in articulos %}
+                                        <li><a href="{{path('cargarArticulo', {'id':articulos.id} )}}">{{articulos.titulo}}</a></li>
+                                    {% endfor %}
+                                    <!-- Articulo  -->
+                                    <li><a href="{{path('formularioContacto')}}"> <span id="textoMenuCont">CONTACTO</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="back-body-white">
+                        <div class="mainbanner">
+                            <div class="slider_container">
+                                <div class="flexslider">
+                                    <ul class="slides">
+
+
+
+                                        <!-- LISTAR Fottos banner -->
+
+                                        {% for banner in banner %}
+
+
+                                        <li> 
+                                            <a href="#"><img src="banner/{{banner.id}}/{{banner.link}}" alt="{{banner.nombre}}" title="{{banner.nombre}}" /></a>
+                                            <div class="flex-caption slideUp">
+                                                <div class="caption-heading"> {{banner.nombre}} </div>
+                                                <div class="clearing"></div>
+                                                <div class="caption-sub-heading"> {{banner.piedefoto}} </div>
+                                                <div class="clearing"></div>
+                                                <div class="main-banner-button"> <a href="{{banner.url}}" target="_blanck"><span id="textverDetalle"><span class="textVerDetalle">VER DETALLE</span></span></a> </div>
+                                            </div>
+                                        </li>
+
+
+
+                                        {% endfor %}
+
+                                        <!-- FIn LISTAR Fottos banner -->
+
+
+
+                                    </ul>
+                                </div>
+
+{% set cont = 0  %}
+ {% for banner2 in banner2 %}
+ {% set cont = cont +1 %}       
+        {% if cont <= 1 %}                    
+            </div><img src="segundoBanner/{{banner2.id}}/{{banner2.url}}" alt="ad1">               
+          {% endif %}                          
+{% endfor %}                                    
+
+                           
+                        </div>
+                        <div class="adbg">
+
+
+                            <div class="row">
+
+
+
+                                <!-- Calugas inicio -->
+                          {% for caluga in caluga %}
+                           {% set foto = caluga.fotoCaluga%}
+                            {% set cont = 0 %}
+                             {%  for foto in foto %}   
+                              {% if cont < 1 %}  
+                                {% set cont = cont + 1 %}
+                                
+                                <div class="small-9 medium-4 medium-uncentered small-centered large-uncentered large-4 columns"> 
+                                <a href="home/datalleCaluga/{{caluga.id}}"><img src="caluga/{{caluga.id}}/{{foto.url}}" alt="{{caluga.titulo}}" /> </a>
+                                
+                                </div>
+                     {% endif %} 
+                      {% endfor %}    
+                       {% endfor %}         
+                                <!-- Calugas fin -->  
+
+                            </div> 
+
+
+                            <!-- DIV SOCIAL COMIENZO -->        
+                            <div class="outer-social"><div class="social-icon">
+
+                                    <!--
+                                    <ul>
+
+
+
+
+                                        <li><img src="{{asset('bundles/projectadminprincipal/img/social-ico-twi.jpg')}}"></li>
+
+                                        <li><img src=" {{asset('bundles/projectadminprincipal/img/social-ico-fb.jpg')}}"></li>
+
+
+                                        <li><img src="{{asset('bundles/projectadminprincipal/img/social-ico-yt.jpg')}}"></li>
+
+
+                                    </ul>
+                                    
+                                    -->
+                                </div>
+
+                            </div>
+
+                            <!-- FIN  SOCIAL COMIENZO -->     
+
+
+
+                        </div>
+                        <div class="fr-border"></div>
+                        <div class="features-titule">
+                            <h1 class="text-center"><span id="textultimosPro">ÚLTIMOS PRODUCTOS</span></h1>
+                        </div>
+                        <div class="row" >
+
+
+
+
+                            <!-- Listar (ASC) ultimos producto -->
+                            
+
+         {% for producto in producto %}
+
+                            <div class="small-6 medium-2 medium-uncentered large-2 large-uncentered columns f-product text-center"> 
+
+          {% set foto = producto.foto %}    
+          {% set contador = 0 %}     
+
+          {% for foto in foto %}
+          {% set contador = contador + 1 %}
+          {% if contador <= 1 %}   
+
+                                <a href="home/detalleProducto/{{producto.id}}">
+
+                                    <img src="productos/{{producto.id}}/{{foto.url}}"   alt="{{producto.nombre}}" width="220" height="284">
+                                </a>
+         {% endif %}
+         {% endfor %}
+
+                                <div class="product-link text-center"> <a href="home/detalleProducto/{{producto.id}}"> {{producto.nombre}}</a> </div>
+                                <div class="f-product-price">  </div>
+                            </div>
+         {% endfor %}
+                            <!-- fin de listar ultimos productos -->
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contentborder"></div>
+
+
+            <!--- Inicio del footer -->
+
+
+    {% include "projectAdminprincipalBundle:Layer:footer.html.twig" %}
+
+
+            <!---Fin del footer -->
+
+            <script type="text/javascript" src="{{asset('bundles/projectadminprincipal/javascripts/vendor/jquery.js')}}"></script>
+            
+                 <script>
+                        $('document').ready(function() {
+                            
+                            var idioma = "{{idioma}}";
+                            console.log('dioma es ' + idioma);
+                            
+                            if(idioma == 'ingles'){
+                            
+                            $('#textoProductos').text('PRODUCTS');
+                            $('#textoMenuCont').text('CONTACT');
+                            $('#textultimosPro').text('LATEST PRODUCTS');
+                            $('#textContFotter').text('Contact');
+                            $('.textVerDetalle').text('View details');
+                            
+                            
+                            
+                            }
+                            
+                            if(idioma == ''){
+                                
+                                
+                            $('#textoProductos').text('PRODUCTOS');
+                            $('#textoMenuCont').text('CONTACTO');
+                            $('#textultimosPro').text('LATEST PRODUCTS');
+                            $('#textContFotter').text('CONTACTO');
+                            $('.textVerDetalle').text('Ver Detalles');    
+                                
+                                
+                            }
+                            
+                        });
+                        
+                        
+                    </script>    
+                    
+                    
+                    
+            <script type="text/javascript" src="{{asset('bundles/projectadminprincipal/javascripts/jquery.selectric.js')}}"></script>
+            <script type="text/javascript">
+                $(function() {
+                    $('select').selectric(); // this function turn all <select> to custom Styling for specific select box use $("#selectbox").selectric(); 
+                });
+                </script>
+                <script src="{{asset('bundles/projectadminprincipal/javascripts/foundation/foundation.js')}}"></script>
+                <script type="text/javascript" src="{{asset('bundles/projectadminprincipal/javascripts/nexx.js')}}"></script>
+                <script type="text/javascript" src="{{asset('bundles/projectadminprincipal/javascripts/vendor/jquery.flexslider-min.js')}}"></script>
+                <script type="text/javascript">
+                     // Main Slider
+                     var $ = jQuery.noConflict();
+                     $(window).load(function() {
+                         $('.flexslider').flexslider();
+                     });
+                    </script>
+                    <script type="text/javascript" src="{{asset('bundles/projectadminprincipal/javascripts/jquery.selectric.js')}}"></script>
+
+
+
+
+
+
+                    <!-- AddThis Smart Layers BEGIN -->
+                    <!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+               <!-- AddThis Smart Layers BEGIN -->
+<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-529109035c5dc365"></script>
+<script type="text/javascript">
+  addthis.layers({
+    'theme' : 'transparent',
+    'share' : {
+      'position' : 'left',
+      'numPreferredServices' : 5
+    },  
+    'whatsnext' : {}  
+  });
+</script>
+<!-- AddThis Smart Layers END -->
+
+                    </body>
+                    
+                    
+                    
+               
+
+{% endblock%}

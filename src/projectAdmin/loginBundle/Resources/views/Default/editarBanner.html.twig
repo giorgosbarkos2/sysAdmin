@@ -1,0 +1,129 @@
+{# Formulario editar banner. #}
+{% extends "projectAdminloginBundle:layers:basePrincipal.html.twig" %}
+{% block title %}Editar Banner{% endblock %}
+{% block padre %}<a href="{{path('vistaFormularioFotoBanner')}}">Editar Banner</a>{% endblock %}
+{% block hijo %} Editar Banner {%endblock%}
+{% block titulo %}Editar Banner{%endblock %}
+{% block contenido %}
+<div class="container well well-sm">
+    
+    
+    <form action="{{path('guardarFormularioEditar')}}" method="POST" class="form-horizontal">
+        <input name="id" type="hidden" id="id" value="{{banner.id}}">
+        <div class="form-group">
+            <label for="nombre" class="col-sm-2 control-label">
+                Nombre:
+            </label>
+            <div class="col-sm-10">
+                <input name="nombre" type="text" id="nombre" class="form-control" value="{{banner.nombre}}">
+            </div>
+        </div>
+        <!-- select idioma -->
+        <div class="form-group">
+            <label for="idioma" class="col-sm-2 control-label">
+                Idioma:
+            </label>
+            <div class="col-sm-10">
+                <select name="idioma" id="idioma" class="form-control">
+                    <option value="ingles">Ingles</option>
+                    <option value="español">Español</option>
+                </select>
+            </div>
+        </div>
+        <!-- select idioma -->        
+        <div class="form-group">
+            <label for="estado" class="col-sm-2 control-label">
+                Estado:
+            </label>
+            <div class="col-sm-10">
+                <input name="estado" type="text" id="estado" class="form-control" value="{{banner.estado}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="titulo" class="col-sm-2 control-label">
+                Titulo:
+            </label>
+            <div class="col-sm-10">
+                <input name="titulo" type="text" id="titulo" class="form-control" value="{{banner.titulo}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="piedefoto" class="col-sm-2 control-label">
+                Pie de imagen:
+            </label>
+            <div class="col-sm-10">
+                <textarea name="piedefoto" id="piedepagina" cols="30" rows="10" class="form-control">{{banner.piedefoto}}</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">
+                Fotos:
+            </label>
+            <div class="col-sm-10">
+                <table id="filafoto">
+                    <tbody>
+                        <tr id="fotobanner-{{banner.id}}">
+                            <td >
+                                <img src="../../banner/{{banner.id}}/{{banner.link}}" alt="{{banner.link}}" height="100" width="100">
+                                <br />
+                                {#{{path('eliminarFotoBanner', {'id':banner.id})}}#}
+                                <!--
+                                <a href="" class="btn btn-danger">Eliminar</a>
+                                -->
+                                <a href="#" id="fotoban-{{banner.id}}" class="eliminar">
+                                    <div class="btn btn-danger">Eliminar</div>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+              
+            <button type="submit"  class="btn btn-default" >Guardar cambios.</button>
+              <a class="btn btn-default" href="{{path('uploadBannerView')}}">Cambiar Foto Slider</a>
+              
+          </div>
+       </div>
+        
+    </form>
+        
+        
+    
+    <form action="{{path('eliminarFotoBanner')}}" id="formEliminaFotoBanner" method="POST"></form>
+    <script>
+        
+        $('document').ready(function(){
+            
+            
+            
+        
+               $("#filafoto").on("click", ".eliminar", function(e) {
+                    e.preventDefault();
+                    var clickedID = this.id.split('-');
+                    var DbNumberID = clickedID[1]; // toma el numero del array
+                    var myData = 'recordToDelete=' + DbNumberID;
+     
+                    jQuery.ajax({
+                        type: "POST",
+                        url: $('#formEliminaFotoBanner').attr('action'),
+                        dataType: "text",
+                        data: myData,
+                        success: function(response) {
+                          $('#fotobanner-' + DbNumberID).hide('slow');;
+
+                        },
+                        error: function(xhr, ajaxOptions, thrownError) {
+
+                            alert(thrownError);
+
+                        }
+
+                    });
+                });
+            });
+  
+    </script>
+{% endblock%}

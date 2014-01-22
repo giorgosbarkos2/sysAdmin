@@ -1,0 +1,124 @@
+
+ {% extends "projectAdminloginBundle:layers:base.html.twig" %}
+
+{% block cuerpo %}
+
+
+
+<div id="cl-wrapper" class="login-container">
+
+	<div class="middle-login">
+		<div class="block-flat">
+			<div class="header">							
+				<h3 class="text-center">Admin Peregrin </h3>
+			</div>
+			<div>
+				<form style="margin-bottom: 0px !important;" class="form-horizontal"  id="loginForm" action="{{path('recibelogin')}}" method="post">
+					<div class="content">
+						<h4 class="title">Login </h4>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<div class="input-group">
+                                                                            
+                                                                            
+                                                                             
+        
+										<span class="input-group-addon"><i class="fa fa-user"></i></span>
+										<input type="text" placeholder="Usuario" name="nusuario" id="nusuario" class="form-control">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+										<input type="password" placeholder="Password" id="contrasena" name="contrasena" class="form-control">
+                                                                                
+                                                                                
+                                                                                                                                                 
+                                                                                                                                                        
+									</div>
+								</div>
+							</div>
+							
+					</div>
+					<div class="foot">
+						
+						<button class="btn btn-primary" data-dismiss="modal" type="submit" id="loginButton">Login </button>
+                                                
+                                                <section id="respuesta">
+                                                </section>
+					</div>
+				</form>
+			</div>
+		</div>
+                <div class="text-center out-links"><a href="#">&copy; 2013 Mediadiv Ltda </a></div>
+                </div> 
+	
+</div>
+
+
+<script>
+$('document').ready(function() {
+                                                                                                                                                   
+   $("#loginButton").click(function(e) {
+        e.preventDefault();
+        var myData = 'nusuario=' + $("#nusuario").val()
+                + '&contrasena=' + $("#contrasena").val()
+                ;
+
+        jQuery.ajax({
+            type: "POST", // metodo post o get 
+            url: $("#loginForm").attr("action"),
+            dataType: "text", // tipo datos text o json etc 
+            data: myData,
+            success: function(response) {
+
+
+                var respuesta = response;
+                
+
+                if (respuesta == 200) {
+
+ 
+ 
+ 
+ 
+
+
+
+          window.location = "principalVista";
+                    
+                    console.log('si');
+
+
+                } else {
+                  respuesta = '\
+\n\
+\n\
+<h3>Ingrese un usuario valido</h3>';
+
+                    $('#respuesta').empty();
+                    
+                    $("#respuesta").append(respuesta);
+
+
+                }
+
+
+
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(thrownError);
+
+
+
+            },
+        });
+    });
+});
+    
+</script>
+
+
+{% endblock  %}

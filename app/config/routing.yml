@@ -1,0 +1,17 @@
+project_adminprincipal:
+    resource: "@projectAdminprincipalBundle/Resources/config/routing.yml"
+    prefix:   /
+
+project_admin_upload:
+    resource: "@projectAdminUploadBundle/Resources/config/routing.yml"
+    prefix:   /
+
+project_admin_paginas:
+    resource: "@projectAdminPaginasBundle/Resources/config/routing.yml"
+    prefix:   /
+
+project_adminlogin:
+    resource: "@projectAdminloginBundle/Resources/config/routing.yml"
+    prefix:   /
+
+

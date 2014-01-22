@@ -1,0 +1,62 @@
+{% extends "projectAdminloginBundle:layers:basePrincipal.html.twig" %}
+{% block padre %}<a href="{{path('listarCategoria')}}">Listar Categorias</a>{% endblock %}
+{% block hijo %} Agregar Producto {%endblock%}
+
+{% block titulo %} Agregar Categorías {%endblock %}
+{% block contenido %}
+
+
+
+<div class="container well well-sm">
+<form action="{{path('guardarCategoria')}}" method="POST" class="form-horizontal" role="form">
+    <fieldset>
+    
+    </fieldset>
+    <div class="form-group">
+        <label for="nombre" class="col-sm-2 control-label">
+            Nombre de la categoria:
+        </label>
+        <div class="col-sm-10">
+            <input name="nombre" type="text" id="nombre" class="form-control">
+        </div>     
+    </div>
+    <!-- select idioma -->
+    <div class="form-group">
+        <label for="idioma" class="col-sm-2 control-label">
+            Idioma:
+        </label>
+        <div class="col-sm-10">
+            <select name="idioma" id="idioma" class="form-control">
+                <option>Opción</option>
+                
+                <option value="ingles">Ingles</option>
+                <option value="español">Español</option>
+            </select>
+        </div>
+    </div>
+    <!-- select idioma -->    
+    <div class="form-group">
+
+        <label for="descripcioncorta" class="col-sm-2 control-label">
+            Titulo: 
+        </label>
+        <div class="col-sm-10">
+            <input name="descripcioncorta" type="text" id="descripcioncorta" class="form-control">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="descripcion" class="col-sm-2 control-label">
+            Descripcion:
+        </label>
+        <div class="col-sm-10">
+            <textarea name="descripcion" id="descripcion" cols="30" rows="10" class="form-control"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Guardar Categoria</button>
+        </div>
+    </div>
+</form>
+</div>
+{% endblock %}

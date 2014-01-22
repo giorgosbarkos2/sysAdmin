@@ -1,0 +1,69 @@
+{# Formulario upload del banner #}
+{% extends "projectAdminloginBundle:layers:basePrincipal.html.twig" %}
+{% block title %}Foto Banner{% endblock %}
+{% block padre %}<a href="{{path('listarBanner')}}">Listar Banners</a>{% endblock %}
+{% block hijo %} Agregar Banner {%endblock%}
+{% block contenido %}
+<div class="container well well-sm">
+    <form action="{{path('guardarFormularioBanner')}}" method="POST" class="form-horizontal" rol="form">
+        <div class="form-group">
+            <label for="nombre" class="col-sm-2 control-label">
+                Nombre:
+            </label>
+            <div class="col-sm-10">
+                <input name="nombre" type="text" id="nombre" class="form-control">
+            </div>
+         </div>
+        <!-- select idioma -->
+        <div class="form-group">
+            <label for="idioma" class="col-sm-2 control-label">
+                Idioma:
+            </label>
+            <div class="col-sm-10">
+                <select name="idioma" id="idioma" class="form-control">
+                    
+                    <option>Opción</option>
+                    <option value="ingles">Ingles</option>
+                    <option value="español">Español</option>
+                    
+                </select>
+            </div>
+        </div>
+        <!-- select idioma -->    
+        
+        
+          <div class="form-group">
+            <label for="titulo" class="col-sm-2 control-label">
+                Url:
+            </label>
+            <div class="col-sm-10">
+                <input name="url" type="text" id="url" class="form-control">
+            </div>
+        </div>
+        
+        
+    
+        <div class="form-group">
+            <label for="titulo" class="col-sm-2 control-label">
+                Titulo:
+            </label>
+            <div class="col-sm-10">
+                <input name="titulo" type="text" id="titulo" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="piedefoto" class="col-sm-2 control-label">
+                Pie de imagen:
+            </label>
+            <div class="col-sm-10">
+                <textarea name="piedefoto" id="piedepagina" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Cargar Imagen.</button>
+          </div>
+       </div>
+    </form>
+</div>
+{% endblock %}

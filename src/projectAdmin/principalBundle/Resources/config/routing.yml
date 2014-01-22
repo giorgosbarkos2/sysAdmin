@@ -1,0 +1,57 @@
+project_adminprincipal_homepage:
+    pattern:  /home
+    defaults: { _controller: projectAdminprincipalBundle:Default:principal }
+
+
+sendContacto:
+  pattern: /home/sendContacto
+  defaults: {_controller: projectAdminprincipalBundle:Default:sendContacto}
+  
+    
+detalleProducto:
+    pattern: /home/detalleProducto/{id}
+    defaults: {_controller: projectAdminprincipalBundle:Default:detalleProducto}
+
+formularioContacto:
+    pattern: /home/formularioContacto
+    defaults: {_controller: projectAdminprincipalBundle:Default:formularioContacto}
+    
+    
+vistaProductos:
+  pattern: /home/productos/{id}
+  defaults: {_controller: projectAdminprincipalBundle:Default:vistaProductos}
+  
+    
+vistaArticulo:
+    pattern: /home/vistaArticulo
+    defaults: {_controller: projectAdminprincipalBundle:Default:vistaArticulo} 
+    
+    
+functionDetalleCaluga:
+   pattern: /home/datalleCaluga/{id}
+   defaults: {_controller: projectAdminprincipalBundle:Default:functionDetalleCaluga} 
+
+cargarArticulo:
+    pattern: /home/cargarArticulo/{id}
+    defaults: {_controller: projectAdminprincipalBundle:Default:cargarArticulo}
+
+
+Idiomas:
+  pattern: /admin/Idiomas
+  defaults: {_controller:  projectAdminprincipalBundle:Default:Idiomas}
+  
+  
+
+espanol:
+  pattern: /home/espanol
+  defaults: {_controller:  projectAdminprincipalBundle:Default:espanol}
+  
+  
+ingles2:
+  pattern: /home/ingles2
+  defaults: {_controller:  projectAdminprincipalBundle:Default:ingles2}
+  
+
+  
+
+  

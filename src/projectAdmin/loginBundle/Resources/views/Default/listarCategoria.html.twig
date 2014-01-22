@@ -1,0 +1,82 @@
+ {% extends "projectAdminloginBundle:layers:basePrincipal.html.twig" %}
+{% block padre %}<a href="{{path('vistaFormularioCategoria')}}">Agregar Categorías</a>{% endblock %}
+{% block hijo %} Listar Categorías {%endblock%}
+{% block titulo %}Listar Categorías{%endblock %}
+{% block contenido %}
+<h1>{{mensaje}}</h1>
+<div class="container well well-sm">
+    <table class="table table-striped table-bordered" id="tablaCategoria">
+        <thead>
+        <th>Nombre:</th>
+        <th>Idioma:</th>
+        <th>Titulo:</th>
+        <th>Descripcion:</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+    </thead>
+    <tbody>
+        {% for categoria in categoria %}
+            
+        <tr id="categoria-{{categoria.id}}">
+            <td>{{categoria.nombre}}</td>
+            <td>{{categoria.idioma}}</td>
+            <td>{{categoria.descripcioncorta}}</td>
+            <td>{{categoria.descripcion}}</td>
+            <td><a href="editarCategoria/{{categoria.id}}" class="btn btn-primary">Editar</a></td>
+            <td><button id="cat-{{categoria.id}}"  class="eliminar">Eliminar</button></td>
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+</div>
+
+<form id="formEliminarCategoria" action="{{path('eliminarCategoria')}}" method="post" ></form>
+<script>
+    
+    
+
+$('document').ready(function() {
+    
+    
+
+
+$("#tablaCategoria").on("click", ".eliminar", function(e) {
+        e.preventDefault();
+        var clickedID = this.id.split('-');
+        var DbNumberID = clickedID[1]; // toma el numero del array
+
+        var myData = 'recordToDelete=' + DbNumberID;
+
+
+        console.log('elemento a elimnar id ' + myData);
+        
+        
+
+        jQuery.ajax({
+            type: "POST",
+            url: $('#formEliminarCategoria').attr('action'),
+            
+            dataType: "text",
+            data: myData,
+            success: function(response) {
+                
+
+                $('#categoria-' + DbNumberID).hide('slow');;
+
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+
+                alert(thrownError);
+
+            }
+
+        });
+    });
+
+});
+</script>
+
+
+
+{% endblock %}

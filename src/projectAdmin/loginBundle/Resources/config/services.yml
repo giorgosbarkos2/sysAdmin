@@ -1,0 +1,7 @@
+parameters:
+#    project_adminlogin.example.class: projectAdmin\loginBundle\Example
+
+services:
+#    project_adminlogin.example:
+#        class: %project_adminlogin.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

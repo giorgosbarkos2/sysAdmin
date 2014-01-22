@@ -1,0 +1,206 @@
+{#######################################################
+    Carga la entidad articulo de la base de datos.
+    Que se enlaza con el meno principal.
+
+########################################################}
+{% extends "projectAdminprincipalBundle:Layer:base.html.twig" %}
+{% block title %} Ariticulo {{caluga.titulo}} {% endblock %}
+{% block body %}
+
+<div class="header">
+    {% include "projectAdminprincipalBundle:Layer:headerInt.html.twig" %}
+                   
+    <div class="back-body">
+    <div class="back-body-inner">
+      <div class="headerbottom">
+        <div class="headerbottomrow">
+          <div class="menu-icon"><i class="icon-menu"></i></div>
+          <div class="mainnav columns">
+            <ul class="navigation">
+              <li> <a href="#"><span id="textoProductos">PRODUCTOS</span></a>
+              <div class="dropdown-menu">
+                  <ul class="dropdown">
+                        {% for categoria in categoria %}  
+                            <li><a href="../../home/productos/{{categoria.id}}" title="{{categoria.nombre}}">{{categoria.nombre}}</a></li>
+                        {% endfor %}
+                  </ul>
+              </div>
+              </li>
+               <!-- Articulo  -->
+               
+                {% for articulos in articulos %}
+                    <li><a href="{{path('cargarArticulo', {'id':articulos.id} )}}">{{articulos.titulo}}</a></li>
+                {% endfor %}
+                <!-- Articulo  -->
+              <li><a href="{{path('formularioContacto')}}"><span id="textoMenuCont">CONTACTO</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+<!-- Breadcrumb 
+	<div class="breadcrumb-holder">
+		<div class="row">
+			<ul class="breadcrumbs small-12 medium-8 large-8 columns">
+				<li><a href="#" title="Homepage">Home</a></li>
+				<li><a href="#" title="product grid">Product Grid</a></li>
+				<li>Cutout Crop Top</li>
+			</ul>
+		</div>
+	</div>
+	<!-- End BreadCrumb -->
+<div class="back-body-white">
+	<div class="row">
+    
+    <div class="small-12 small-centered medium-8 medium-uncentered large-8 large-uncentered product-description columns margin">
+  <div class="product-detail-title">
+				{{caluga.titulo}}
+	    </div>
+  <div class="product-detail-description-sub">"{{caluga.descripcioncorta}}"</div>
+            <br><br>
+
+			<div class="product-detail-description">
+                            {{caluga.descripcion}}
+                        </div> 
+		</div>
+    
+      <div class="small-6 small-centered medium-4 medium-uncentered large-4 large-uncentered product-thumb columns text-center margin">
+        <div class="product-main-photo"> 
+            
+                  
+             {% set foto = caluga.fotoCaluga%}
+       
+            
+                            {% set cont = 0 %}
+                             {%  for foto in foto %}  
+                            {% set cont = cont + 1 %}
+                           {% if cont >  1 %} 
+                       
+                       
+            
+        <img src="../../caluga/{{caluga.id}}/{{foto.url}}" width="295" height="373"/>
+        
+        
+        
+        
+        
+        
+                      {% endif %}
+                      {% endfor %}    
+             
+        
+        
+        
+        
+        </div>
+          </div>
+        </div>
+      </div>
+     
+   	
+    <br><br><br><br><br>
+	
+	</div></div></div>
+    <div class="contentborder"></div>
+
+      {% include "projectAdminprincipalBundle:Layer:footer.html.twig" %}
+
+
+            <!---Fin del footer -->
+
+            <script type="text/javascript" src="{{asset('bundles/projectadminprincipal/javascripts/vendor/jquery.js')}}"></script>
+            <script type="text/javascript" src="{{asset('bundles/projectadminprincipal/javascripts/jquery.selectric.js')}}"></script>
+            
+            
+            
+            
+            
+            
+            
+            
+            <script>
+                        $('document').ready(function() {
+                            
+                            var idioma = "{{idioma}}";
+                            console.log('dioma es ' + idioma);
+                            
+                            if(idioma == 'ingles'){
+                            
+                            $('#textoProductos').text('PRODUCTS');
+                            $('#textoMenuCont').text('CONTACT');
+                            $('#textultimosPro').text('LATEST PRODUCTS');
+                            $('#textContFotter').text('Contact');
+                            $('.textVerDetalle').text('View details');
+                            
+                            
+                            
+                            }
+                            
+                            if(idioma == ''){
+                                
+                                
+                            $('#textoProductos').text('PRODUCTOS');
+                            $('#textoMenuCont').text('CONTACTO');
+                            $('#textultimosPro').text('LATEST PRODUCTS');
+                            $('#textContFotter').text('CONTACTO');
+                            $('.textVerDetalle').text('Ver Detalles');    
+                                
+                                
+                            }
+                            
+                        });
+                        
+                        
+                    </script>    
+                    
+                    
+                    
+            
+            
+            
+            
+            
+            
+            <script type="text/javascript">
+                $(function() {
+                    $('select').selectric(); // this function turn all <select> to custom Styling for specific select box use $("#selectbox").selectric(); 
+                });
+                </script>
+                <script src="{{asset('bundles/projectadminprincipal/javascripts/foundation/foundation.js')}}"></script>
+                <script type="text/javascript" src="{{asset('bundles/projectadminprincipal/javascripts/nexx.js')}}"></script>
+                <script type="text/javascript" src="{{asset('bundles/projectadminprincipal/javascripts/vendor/jquery.flexslider-min.js')}}"></script>
+                <script type="text/javascript">
+                     // Main Slider
+                     var $ = jQuery.noConflict();
+                     $(window).load(function() {
+                         $('.flexslider').flexslider();
+                     });
+                    </script>
+                    <script type="text/javascript" src="{{asset('bundles/projectadminprincipal/javascripts/jquery.selectric.js')}}"></script>
+
+
+
+
+
+
+                    <!-- AddThis Smart Layers BEGIN -->
+                    <!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-529109035c5dc365"></script>
+                    <script type="text/javascript">
+                        addthis.layers({
+                            'theme': 'gray',
+                            'share': {
+                                'position': 'left',
+                                'numPreferredServices': 5
+                            },
+                            'whatsnext': {},
+                            'recommended': {}
+                        });
+                        </script>
+                        <!-- AddThis Smart Layers END -->
+
+
+                    </body>
+    
+    
+
+{% endblock %}

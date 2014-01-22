@@ -1,0 +1,85 @@
+{% extends "projectAdminloginBundle:layers:basePrincipal.html.twig" %}
+{% block title%} Agregar producto {% endblock %}
+{% block padre %}<a href="{{path('listarProducto')}}">Listar Producto</a>{% endblock %}
+{% block hijo %} Agregar Producto {%endblock%}
+{% block titulo %} Agregar Productos {%endblock %}
+{% block contenido %}
+<div class="container well well-sm">
+    <form action="{{path('guardarProducto')}}" method="POST" class="form-horizontal" rol="form">
+        <div class="form-group">
+             <label for="nombre" class="col-sm-2 control-label">
+                Categorias:
+            </label>
+            <div class="col-sm-10">
+                 <select id="categoria" name="categoria"  class="form-control">
+                    <option>Opcion</option>
+                    {% for categorias in categorias %}
+                        <option value="{{categorias.id}}">{{categorias.nombre}}</option>
+                    {% endfor %}    
+                </select>
+            </div>
+           <div style="width: 10px;height: 50px;position:relative;"></div>
+            <label for="nombre" class="col-sm-2 control-label">
+                Titulo:
+            </label>
+            <div class="col-sm-10">
+                <input name="nombre" type="text" id="nombre" class="form-control">
+            </div>
+        </div>
+        <!-- select idioma -->
+        <div class="form-group">
+            <label for="idioma" class="col-sm-2 control-label">
+                Idioma:
+            </label>
+            <div class="col-sm-10">
+                <select name="idioma" id="idioma" class="form-control">
+                    <option>Opción</option>
+                    <option value="ingles">Ingles</option>
+                    <option value="español">Español</option>
+                </select>
+            </div>
+        </div>
+        <!-- select idioma -->            
+    
+     
+        <div class="form-group">
+            <label for="caracteristicauno" class="col-sm-2 control-label">
+               Capa:
+            </label>
+            <div class="col-sm-10">
+                <input name="caracteristicauno" type="text" id="caracteristicauno" class="form-control">
+            </div>
+        </div>
+     
+     
+    
+     
+     
+        <div class="form-group">
+            <label for="caracteristicados" class="col-sm-2 control-label">
+               Material tela:
+            </label>
+            <div class="col-sm-10">
+                <input name="caracteristicados" type="text" id="caracteristicados" class="form-control">
+            </div>
+        </div>
+      
+     
+    
+      
+        <div class="form-group">
+            <label for="descripcion" class="col-sm-2 control-label">
+              Características Técnicas:
+            </label>
+            <div class="col-sm-10">
+                <textarea name="descripcion" id="descripcion" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+        </div>
+       <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Cargar Fotos del Producto</button>
+          </div>
+       </div>
+    </form>
+</div>
+{% endblock%}

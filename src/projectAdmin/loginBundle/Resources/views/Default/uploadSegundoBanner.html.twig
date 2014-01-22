@@ -1,0 +1,127 @@
+{# Formulario que contiene el upload de la segundo banner #}
+{% extends "projectAdminloginBundle:layers:basePrincipal.html.twig" %}
+{% block title %} Cargar Segundo Banner {% endblock%}
+{% block hijo %} Upload Segundo Banner {%endblock%}
+{% block contenido %}
+
+
+<link rel="stylesheet" href=" {{ asset('bundles/projectadminpaginas/upload/ui-lightness/jquery-ui-1.10.3.custom.css') }}" />
+
+<script src="{{ asset('bundles/projectadminpaginas/upload/jquery.js') }}"></script>
+
+<script src="{{asset('bundles/projectadminpaginas/js/jquery-ui-1.8.14.custom.min.js') }}"></script>
+<link rel="stylesheet" href="{{asset('bundles/projectadminpaginas/upload/jquery.ui.plupload/css/jquery.ui.plupload.css')}}" type="text/css" />
+ 
+<script type="text/javascript" src="{{asset('bundles/projectadminpaginas/js/plupload.js')}}"></script>
+                                    <script type="text/javascript" src="{{asset('bundles/projectadminpaginas/upload/plupload.gears.js')}}"></script>
+                                    <script type="text/javascript" src="{{asset('bundles/projectadminpaginas/upload/plupload.silverlight.js')}}"></script>
+                                    <script type="text/javascript" src="{{asset('bundles/projectadminpaginas/upload/plupload.flash.js')}}"></script>
+                                    <script type="text/javascript" src="{{asset('bundles/projectadminpaginas/upload/plupload.browserplus.js')}}"></script>
+                                    <script type="text/javascript" src="{{asset('bundles/projectadminpaginas/upload/plupload.html4.js')}}"></script>
+                                    <script type="text/javascript" src="{{asset('bundles/projectadminpaginas/upload/plupload.html5.js')}}"></script>
+                                    <script type="text/javascript" src="{{asset('bundles/projectadminpaginas/upload/jquery.ui.plupload/jquery.ui.plupload.js')}}"></script>
+                                    
+                                    
+                                    
+        
+<h5>Sube tus imagen del Banner ads  con formato jpg</h5>
+
+<h5>Agregado Banner Fijo / Agrega la foto </h5>
+
+
+<br>
+
+
+<button style="margin-top:30px;" onclick="window.location.href='vistaFormularioSegundoBanner'">Agregar otro Banner Fijo </button>
+
+
+
+<div style="width: 800px; height: 300px; margin-top: -60px;">
+
+
+<form  method="post" action="">
+	<div id="uploader" style="width:900px;height:200px;margin-top: 80px;">
+		
+	
+</form>
+    
+    
+<script type="text/javascript">
+    
+$('document').ready(function() {
+
+
+$(function() {
+	$("#uploader").plupload({
+		// General settings
+               
+               
+		runtimes : 'html5,flash',
+		url : 'uploadSegundoBanner',
+		max_file_size : '1000mb',
+		max_file_count: 20, // user can add no more then 20 files at a time
+		chunk_size : '3mb',
+                                 autostart : true,
+		rename: true,
+		multiple_queues : true,
+
+		// Resize images on clientside if we can
+		resize : {quality : 80},
+		
+		// Rename files by clicking on their titles
+		rename: true,
+		
+		// Sort files
+		sortable: true,
+
+		// Specify what files to browse for
+		filters : [
+			{title : "Image files", extensions : "jpg,gif,png"}
+			
+		],
+
+		// Flash settings
+		flash_swf_url : "{{asset('bundles/benchupload/js/plupload.flash.swf')}}",
+
+		// Silverlight settings
+		silverlight_xap_url : "{{asset('bundles/benchupload/js/plupload.silverlight.xap')}}"
+	});
+
+
+
+	// Client side form validation
+	$('#uploader').submit(function(e) {
+            
+                var uploader = $('#uploader').plupload('getUploader');
+               
+               
+
+        // Files in queue upload them first
+        if (uploader.files.length > 0) {
+            // When all files are uploaded submit form
+            uploader.bind('StateChanged', function() {
+                if (uploader.files.length === (uploader.total.uploaded + uploader.total.failed)) {
+                    $('form')[0].submit();
+               
+                }
+            });
+                
+            uploader.start();
+             
+      
+        } else
+            alert('You must at least upload one file.');
+
+
+        return false;
+    });
+	 
+
+});
+
+});
+
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{# empty Twig template #}
+{# empty Twig template #}
+
+<div class="cl-sidebar">
+     <div class="cl-toggle"><i class="fa fa-bars"></i></div>
+     <div class="cl-navblock">
+       <ul class="cl-vnavigation">
+         <li><a href="{{path('principalVista')}}"><i class="fa fa-home"></i>Principal</a></li>
+    
+         <!-- Crud Articulo -->
+         <li><a href="#"><i class="fa fa-list-alt"></i>Art&iacute;culos </a>
+           <ul class="sub-menu">
+               
+                             
+             <li><a href="{{path('vistaFormularioArticulo')}}">Agregar Art&iacute;culos</a></li>
+             <li><a href="{{path('listarArticulos')}}">Listar Art&iacute;culos / Editar /  Eliminar</a></li>
+ 
+             
+           </ul>
+         </li>
+         <!-- Crud Articulo -->
+         
+         
+         </li>
+         <li><a href="#"><i class="fa fa-list-alt"></i>Categorias</a>
+           <ul class="sub-menu">
+               
+                             
+             <li><a href="{{path('vistaFormularioCategoria')}}">Agregar Categorías</a></li>
+             <li><a href="{{path('listarCategoria')}}">Listar Categorías / Editar /  Eliminar</a></li>
+ 
+             
+           </ul>
+         </li>
+         
+         
+           <li><a href="#"><i class="fa fa-list-alt"></i>Productos</a>
+           <ul class="sub-menu">
+               
+                             
+             <li><a href="{{path('vistaFormularioProducto')}}">Agregar Productos </a></li>
+             <li><a href="{{path('listarProducto')}}">Listar Productos  / Editar /  Eliminar</a></li>
+ 
+           </ul>
+         </li>
+         
+         
+         
+           <li><a href="#"><i class="fa fa-list-alt"></i>Fotos Slider</a>
+           <ul class="sub-menu">
+               
+                             
+             <li><a href="{{path('vistaFormularioFotoBanner')}}">Agregar Fotos Slider</a></li>
+             <li><a href="{{path('listarBanner')}}">Fotos Slider  / Editar /  Eliminar</a></li>
+ 
+           </ul>
+         </li>
+         
+         
+         <!-- Menu Banner2 -->
+         <li><a href="#"><i class="fa fa-list-alt"></i>Banner Fijo</a>
+         <ul class="sub-menu">
+             <li><a href="{{path('vistaFormularioSegundoBanner')}}">Agregar Banner Fijo</a></li>
+             <li><a href="{{path('listarSegundoBanner')}}">Banner Fijo / Editar /  Eliminar</a></li>
+         </ul>
+         </li>
+        
+         <li><a href="#"><i class="fa fa-list-alt"></i>Calugas Articulos </a>
+         <ul class="sub-menu">
+            <li><a href="{{path('vistaFormularioCaluga')}}">Agregar Caluga</a></li>
+             <li><a href="{{path('listarCalugas')}}">Calugas / Editar /  Eliminar</a></li>
+         </ul>
+        </li>
+        <!-- Menu Caluga -->
+      </ul>
+    </div>
+   </div>

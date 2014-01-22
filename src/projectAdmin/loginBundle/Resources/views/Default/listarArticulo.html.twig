@@ -1,0 +1,68 @@
+{##############################################
+    Plantilla que lista los articulos ingresados
+    por el usuario.
+###############################################}
+
+{% extends "projectAdminloginBundle:layers:basePrincipal.html.twig" %}
+{% block title %}Listar Art&iacute;culo{% endblock %}
+{% block padre %}<a href="{{path('vistaFormularioArticulo')}}">Agregar Art&iacute;culo</a>{% endblock %}
+{% block hijo %} Listar Art&iacute;culo {%endblock%}
+{% block titulo %}Listar Art&iacute;culo{%endblock %}
+{% block contenido %}
+<div class="container">
+    <table class="table" id="tablaArticulos">
+        <thead>
+            <th>Titulo</th>
+            <th>Idioma</th>
+            <th>Descripcion</th>
+            <th>Foto</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+        </thead>
+        <tbody>
+            {% for articulo in articulo %}
+            <tr id="articulo-{{articulo.id}}">
+                <td>{{articulo.titulo}}</td>
+                <td>{{articulo.idioma}}</td>
+                <td>{{articulo.articulo}}</td>
+                <td>
+                    <img src="../articulo/{{articulo.id}}/{{articulo.url}}" style="height: 100px; width: 100px"/>
+                </td>
+                <td><a href="vistaFormularioEditarArticulo/{{articulo.id}}" class="btn btn-primary">Editar</a></td>
+                <td><button id="art-{{articulo.id}}" class="eliminar">Eliminar</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<form action="{{path('eliminarArticulo')}}" method="post" id="formEliminarArticulo" ></form>
+<script>
+    $('document').ready(function(){
+        $("#tablaArticulos").on("click", ".eliminar", function(e) {
+            e.preventDefault();
+            var clickedID = this.id.split('-');
+            var DbNumberID = clickedID[1]; // toma el numero del array
+            var myData = 'recordToDelete=' + DbNumberID;
+
+            jQuery.ajax({
+                type: "POST",
+                url: $('#formEliminarArticulo').attr('action'),
+                dataType: "text",
+                data: myData,
+                success: function(response) {
+
+
+                  $('#articulo-' + DbNumberID).hide('slow');;
+
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+
+                    alert(thrownError);
+
+                }
+
+            });
+        });
+    });
+</script>
+{% endblock %}
